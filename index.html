@@ -1,85 +1,625 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Sewangan Charitable Trust Donation</title>
+<html lang="en">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Donate | Sewangan Charitable Trust</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
 <style>
 
-body{
-font-family:Arial;
-background:#f5f5f5;
-text-align:center;
-padding:20px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-.box{
+body{
+background:#f5f7fb;
+color:#222;
+}
+
+
+.header{
+
+background:linear-gradient(135deg,#0f766e,#14b8a6);
+color:white;
+text-align:center;
+padding:35px 20px;
+
+}
+
+
+.header img{
+
+width:110px;
+background:white;
+border-radius:50%;
+padding:8px;
+
+}
+
+
+.header h1{
+
+margin-top:15px;
+font-size:32px;
+
+}
+
+
+.header p{
+
+font-size:16px;
+
+}
+
+
+.container{
+
+max-width:850px;
+margin:auto;
+padding:20px;
+
+}
+
+
+.card{
+
 background:white;
 padding:25px;
-border-radius:15px;
-max-width:450px;
-margin:auto;
+margin-bottom:25px;
+border-radius:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
 }
 
-.logo{
-width:120px;
+
+.title{
+
+font-size:22px;
+font-weight:600;
+color:#0f766e;
+margin-bottom:20px;
+
 }
 
-button{
-background:#008000;
-color:white;
-padding:15px 30px;
+
+label{
+
+display:block;
+margin-bottom:7px;
+font-weight:500;
+
+}
+
+
+input,
+textarea,
+select{
+
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-bottom:15px;
+font-size:15px;
+
+}
+
+
+.amounts{
+
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:15px;
+
+}
+
+
+.amounts button{
+
+padding:12px 18px;
 border:none;
-border-radius:8px;
-font-size:18px;
+border-radius:10px;
+background:#e6fffb;
+font-weight:600;
+cursor:pointer;
+
 }
 
-a{
-text-decoration:none;
+
+.amounts button:hover{
+
+background:#0f766e;
+color:white;
+
 }
+
+
+.qr{
+
+text-align:center;
+
+}
+
+
+.qr img{
+
+width:260px;
+max-width:100%;
+border-radius:15px;
+
+}
+
+
+.upi{
+
+margin:15px 0;
+padding:12px;
+background:#f1f5f9;
+border-radius:10px;
+font-weight:600;
+
+}
+
+
+.btn{
+
+display:block;
+width:100%;
+padding:15px;
+background:#0f766e;
+color:white;
+border:none;
+border-radius:12px;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+text-align:center;
+
+}
+
+
+.back{
+
+margin-top:15px;
+background:#334155;
+
+}
+
+
+.hidden{
+
+display:none;
+
+}
+
+
+.success{
+
+display:none;
+background:#dcfce7;
+padding:15px;
+border-radius:10px;
+color:#166534;
+margin-top:15px;
+
+}
+
+
+.footer{
+
+text-align:center;
+padding:20px;
+font-size:14px;
+
+}
+
 
 </style>
 
 </head>
 
+
 <body>
 
 
-<div class="box">
+<div class="header">
 
-<img class="logo" src="logo.png">
+<img src="logo.png">
 
-<h2>Sewangan Charitable Trust</h2>
+<h1>Support Our Mission</h1>
 
-<p>
-Support our education, health and social welfare initiatives.
-</p>
+<p>Your contribution helps us serve humanity through education, health and social welfare.</p>
 
-
-<h3>Donate Us</h3>
+</div>
 
 
-<img src="upi-qr.png" width="250">
+
+<div class="container">
 
 
-<p>
+<form id="donationForm">
+
+
+
+<div class="card">
+
+
+<div class="title">
+Donor Details
+</div>
+
+
+<label>Full Name</label>
+
+<input id="name" required>
+
+
+
+<label>Mobile Number</label>
+
+<input id="mobile" type="tel" required>
+
+
+
+<label>Email Address</label>
+
+<input id="email" type="email" required>
+
+
+
+
+<label>Donation Amount</label>
+
+
+<div class="amounts">
+
+<button type="button" onclick="setAmount(101)">₹101</button>
+
+<button type="button" onclick="setAmount(501)">₹501</button>
+
+<button type="button" onclick="setAmount(1100)">₹1100</button>
+
+<button type="button" onclick="setAmount(2100)">₹2100</button>
+
+</div>
+
+
+<input id="amount" type="number" placeholder="Enter amount" required>
+
+
+
+<label>
+Need 80G Tax Exemption Receipt?
+</label>
+
+
+<select id="receiptOption" onchange="toggle80G()">
+
+<option value="No">No</option>
+
+<option value="Yes">Yes</option>
+
+</select>
+
+
+
+<div id="extraFields" class="hidden">
+
+
+<label>PAN Number</label>
+
+<input id="pan">
+
+
+<label>Full Address</label>
+
+<textarea id="address"></textarea>
+
+
+<label>PIN Code</label>
+
+<input id="pincode">
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card qr">
+
+
+<div class="title">
+Pay Through UPI
+</div>
+
+
+<img src="upi-qr.png">
+
+
+<div class="upi">
 UPI ID:
-<br>
 9955570166@okbizaxis
-</p>
+</div>
 
 
-<a href="https://www.sewangan.in">
-
-<button>
-Back to Website
-</button>
-
+<a class="btn" id="upiButton">
+Pay via UPI App
 </a>
 
 
 </div>
+
+
+
+
+<div class="card">
+
+
+<div class="title">
+Payment Verification
+</div>
+
+
+
+<label>
+UTR / Transaction Reference Number
+</label>
+
+
+<input id="utr" required>
+
+
+
+<label>
+Upload Payment Screenshot
+</label>
+
+
+<input type="file" id="screenshot" accept="image/*">
+
+
+
+<button class="btn" type="submit">
+Submit Donation
+</button>
+
+
+<div class="success" id="successMessage">
+
+Thank you for your donation.
+
+<br><br>
+
+Your details have been submitted successfully.
+
+<br>
+
+Receipt will be issued after verification.
+
+</div>
+
+
+
+</div>
+
+
+
+</form>
+
+
+
+<a class="btn back" href="https://www.sewangan.in">
+
+← Back to Sewangan Website
+
+</a>
+
+
+
+</div>
+
+
+
+
+<div class="footer">
+
+© Sewangan Charitable Trust
+
+</div>
+
+
+
+
+
+<script>
+
+
+function setAmount(value){
+
+document.getElementById("amount").value=value;
+
+updateUPI();
+
+}
+
+
+
+function toggle80G(){
+
+let value=document.getElementById("receiptOption").value;
+
+let box=document.getElementById("extraFields");
+
+
+if(value==="Yes"){
+
+box.classList.remove("hidden");
+
+}
+
+else{
+
+box.classList.add("hidden");
+
+}
+
+
+}
+
+
+
+
+function updateUPI(){
+
+
+let amount=document.getElementById("amount").value || 1;
+
+
+let link=
+"upi://pay?pa=9955570166@okbizaxis&pn=Sewangan%20Charitable%20Trust&am="+amount+"&cu=INR";
+
+
+document.getElementById("upiButton").href=link;
+
+
+}
+
+
+
+document.getElementById("amount")
+.addEventListener("input",updateUPI);
+
+
+
+updateUPI();
+
+
+
+
+
+
+document.getElementById("donationForm")
+.addEventListener("submit",async function(e){
+
+
+e.preventDefault();
+
+
+
+let file=document.getElementById("screenshot").files[0];
+
+
+let base64="";
+
+
+if(file){
+
+base64=await convertBase64(file);
+
+}
+
+
+
+
+let data={
+
+
+name:document.getElementById("name").value,
+
+mobile:document.getElementById("mobile").value,
+
+email:document.getElementById("email").value,
+
+amount:document.getElementById("amount").value,
+
+receipt80G:document.getElementById("receiptOption").value,
+
+pan:document.getElementById("pan").value,
+
+address:document.getElementById("address").value,
+
+pincode:document.getElementById("pincode").value,
+
+utr:document.getElementById("utr").value,
+
+screenshot:base64
+
+
+};
+
+
+
+
+fetch("https://script.google.com/macros/s/AKfycbx1slE5wdmYdiAbMO_CQPJkeb2BGYnSqwc_HizYGSNVHFfobpltqQjDMW1PwRaF-A/exec",
+
+{
+
+method:"POST",
+
+mode:"no-cors",
+
+body:JSON.stringify(data)
+
+})
+
+.then(()=>{
+
+
+document.getElementById("successMessage").style.display="block";
+
+document.getElementById("donationForm").reset();
+
+
+})
+
+
+});
+
+
+
+
+
+
+function convertBase64(file){
+
+return new Promise((resolve,reject)=>{
+
+
+let reader=new FileReader();
+
+
+reader.readAsDataURL(file);
+
+
+reader.onload=()=>resolve(reader.result);
+
+
+reader.onerror=error=>reject(error);
+
+
+});
+
+
+}
+
+
+</script>
+
 
 
 </body>
