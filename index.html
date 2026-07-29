@@ -262,19 +262,19 @@ Donor Details
 
 <label>Full Name</label>
 
-<input id="name" required>
+<input id="name" name="name" required>
 
 
 
 <label>Mobile Number</label>
 
-<input id="mobile" type="tel" required>
+<input id="mobile" name="mobile" type="tel" required>
 
 
 
 <label>Email Address</label>
 
-<input id="email" type="email" required>
+<input id="email" name="email" type="email" required>
 
 
 
@@ -295,9 +295,29 @@ Donor Details
 </div>
 
 
-<input id="amount" type="number" placeholder="Enter amount" required>
+<input id="amount" name="amount" type="number" placeholder="Enter amount" required>
 
+<label>Donation Purpose</label>
 
+<select id="purpose">
+
+<option value="Education">Education Support</option>
+
+<option value="Child">Child Sponsorship</option>
+
+<option value="Health">Health Initiative</option>
+
+<option value="Women">Women Empowerment</option>
+
+<option value="Skill Developmen">Education Support</option>
+
+<option value="Food">Food Distribution</option>
+
+<option value="Social Welfare">Social Welfare</option>
+
+<option value="General Donation">General Donation</option>
+
+</select>
 
 <label>
 Need 80G Tax Exemption Receipt?
@@ -381,7 +401,7 @@ UTR / Transaction Reference Number
 </label>
 
 
-<input id="utr" required>
+<input id="utr" name="utr" required>
 
 
 
